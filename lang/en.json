@@ -1,0 +1,4 @@
+{
+    "test": "It is translated string from JSON file.",
+    "Our favorite color is :variable.": "They say their favorite color is :variable."
+}

@@ -1,0 +1,20 @@
+{
+    "name": "lapin",
+    "version": "1.0.0",
+    "description": "Lapin",
+    "main": "",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "scss": "node-sass resources/scss_bootstrap -o resources/css && node-sass resources/scss -o resources/css",
+        "scss-watch": "node-sass --watch resources/scss -o resources/css"
+
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "node-sass": "^7.0.1"
+    }
+}
