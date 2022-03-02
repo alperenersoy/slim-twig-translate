@@ -76,7 +76,7 @@ $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, $logError, $lo
 $errorMiddleware->setDefaultErrorHandler($errorHandler);
 
 // Setup Twig
-$twig = Twig::create('../templates', ['cache' => $settings->get('twigCache')]);
+$twig = Twig::create($settings->get('twig')['templateDir'], ['cache' => $settings->get('twig')['cache']]);
 $container->set('view', $twig);
 $app->add(TwigMiddleware::create($app, $twig));
 

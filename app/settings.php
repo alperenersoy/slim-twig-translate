@@ -21,9 +21,11 @@ return function (ContainerBuilder $containerBuilder) {
                     'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
                     'level' => Logger::DEBUG,
                 ],
-                'twigCache' => false, /*'../var/cache'*/
-                'translator' =>
-                [
+                'twig' => [
+                    'templateDir' => '../templates',
+                    'cache' => false, /*'../var/cache'*/
+                ],
+                'translator' => [
                     'locale' => 'en',
                     'fallback' => 'en',
                     'folderPath' => '../lang'
