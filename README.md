@@ -39,6 +39,7 @@ Serve the Application
 To serve this application, run serve command in public folder:
 
 ```bash
+cd public
 php -S localhost:8080
 ```
 
