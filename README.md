@@ -22,7 +22,7 @@ composer install
 Configuration
 
 You can configure twig and translation settings from app/settings.php
-```
+```php
 'twig' => [
     'templateDir' => '../templates',
     'cache' => false, /*'../var/cache'*/
@@ -49,7 +49,7 @@ Put your language files to the directory you specified. You can use JSON files s
 
 In your twig template files, call these functions:
 
-```
+```php
 trans('key')
 translate('key')
 __('key')
@@ -58,11 +58,11 @@ __('key')
 You can specify other parameters:
 
 Replaceable variables:
-```
+```php
 __("Our favorite color is :variable.",{'variable':"blue"})
 ```
 
 Full usage ($key, array $replace = [], $locale = null, $fallback = true):
-```
-{{ __("Our favorite color is :variable.", {'variable':"blue"}, "en", true) }}
+```php
+__("Our favorite color is :variable.", {'variable':"blue"}, "en", true)
 ```
