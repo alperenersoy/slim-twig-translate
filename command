@@ -8,7 +8,7 @@ $command = $argv[1];
 
 if ($command == 'export-translations') {
     if (!key_exists(2, $argv) || !key_exists(3, $argv) || !key_exists(4, $argv))
-        exit(colorize('Parameters missing. Usage: php export-translations templateDir langDir targetLanguage', 'error'));
+        exit(colorize('Parameters missing. Usage: php command export-translations templateDirectory langDirectory targetLanguage', 'error'));
 
     $templateDir = $argv[2];
     $langDir = $argv[3];

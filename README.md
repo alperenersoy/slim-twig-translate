@@ -6,20 +6,20 @@ It can help to build small web applications which needs basic routing system, te
 
 ## Install the Application
 
-Clone this repository.
+### Clone this repository.
 
 ```bash
 git clone https://github.com/alperenersoy/slim-twig-translate.git
 cd slim-twig-translate
 ```
 
-Install dependencies
+### Install dependencies
 
 ```bash
 composer install
 ```
 
-Configuration
+### Configuration
 
 You can configure twig and translation settings from app/settings.php
 ```php
@@ -34,7 +34,7 @@ You can configure twig and translation settings from app/settings.php
 ]
 ```
 
-Serve the Application
+### Serve the Application
 
 To serve this application, run serve command in public folder:
 
@@ -57,12 +57,32 @@ __('key')
 
 You can specify other parameters:
 
-Replaceable variables:
+Replaceable variables
 ```php
 __("Our favorite color is :variable.",{'variable':"blue"})
 ```
 
-Full usage ($key, array $replace = [], $locale = null, $fallback = true):
+Full usage ($key, array $replace = [], $locale = null, $fallback = true)
 ```php
 __("Our favorite color is :variable.", {'variable':"blue"}, "en", true)
 ```
+
+## Extra
+
+### Other Twig Functions
+```php
+getLocale() //gets locale e.g. "en".
+hasTranslation($key, $locale = null, $fallback = true) //checks if translation exists. returns true or false
+```
+
+### PHP CLI Command to Export Translations From Templates
+
+This command helps to export translatable strings from your twig templates.
+
+```bash
+php command export-translations <templateDirectory> <languageDirectory> <targetLanguage>
+#default example
+php command export-translations templates lang en
+```
+
+This will create or update lang/en.json with untranslated keys.
