@@ -37,16 +37,16 @@ if ($command == 'export-translations') {
             $currentTranslations = json_decode($content);
     }
 
-    $currentTranslationsCount = 0;
+    $currentTranslationCount = 0;
     foreach ($currentTranslations as $currentTranslation) {
-        $currentTranslationsCount++;
+        $currentTranslationCount++;
     }
 
     $newTranslationCount = 0;
     $files = getFiles($templateDir);
     foreach ($files as $file) {
         $content = file_get_contents($file);
-        preg_match_all('/(?:__|translate|trans)\((?:\"|\')([^\)]*)(?:\"|\')(\s{0,},\s{0,}{|\))/', $content, $matches, PREG_PATTERN_ORDER);
+        preg_match_all('/(?:__|translate|trans)\s{0,}\(\s{0,}(?:\"|\')([^\)]*)(?:\"|\')\s{0,}(,\s{0,}{|\))/', $content, $matches, PREG_PATTERN_ORDER);
         $tmpKeys = isset($matches[1]) ? $matches[1] : [];
         foreach ($tmpKeys as $tmpKey) {
             if (!isset($currentTranslations->{$tmpKey})) {
@@ -58,11 +58,11 @@ if ($command == 'export-translations') {
     if ($newTranslationCount == 0)
         exit(colorize('No new translations found.', 'warning'));
 
-    if ($currentTranslationsCount > 0)
-        $createLangDir = readline(colorize($newTranslationCount . ' translations found. These will be added to ' . $currentTranslationsCount . ' existing one. Type "yes" or "y" to approve, something else to exit:', 'warning'));
-    if ($currentTranslationsCount == 0 || $createLangDir == 'y' || $createLangDir == 'yes') {
+    if ($currentTranslationCount > 0)
+        $createLangDir = readline(colorize($newTranslationCount . ' translations found. These will be added to ' . $currentTranslationCount . ' existing one. Type "yes" or "y" to approve, something else to exit:', 'warning'));
+    if ($currentTranslationCount == 0 || $createLangDir == 'y' || $createLangDir == 'yes') {
         $file = fopen($filePath, "w") or die("Unable to open file!");
-        fwrite($file, json_encode($currentTranslations, JSON_PRETTY_PRINT));
+        fwrite($file, json_encode($currentTranslations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         fclose($file);
         exit(colorize($newTranslationCount . ' translations successfully added.', 'success'));
     }
