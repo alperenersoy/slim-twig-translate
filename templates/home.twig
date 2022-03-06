@@ -1,15 +1,12 @@
-{% extends "layouts/default.twig" %}
-{% block content %}
-	<strong>From JSON File:</strong>
-	{{ __("test") }}
-	<br>
-	<strong>From php File:</strong>
-	{{ __("home.test") }}
-	<br>
-	<strong>With variable:</strong>
-	{{ __("Our favorite color is :variable.",{'variable':"blue"}) }}
-	<br>
-	<strong>Full usage ($key, array $replace = [], $locale = null, $fallback = true):</strong>
-	{{ __("Our favorite color is :variable.", {'variable':"blue"}, "en", true) }}
-
-{% endblock content %}
+{% extends "layouts/default.twig" %} {% block content %}
+<strong>From JSON File:</strong> {{ __("test") }}
+<br>
+<strong>From php File:</strong> {{ __("home.test") }}
+<br>
+<strong>With variable:</strong> {{ __("Our favorite color is :variable.",{'variable':"blue"}) }}
+<br>
+<strong>Full usage ($key, array $replace = [], $locale = null, $fallback = true):</strong> {{ __("Our favorite color is :variable.", {'variable':"blue"}, "en", true) }}
+<br>
+<strong>With pluralization (singular):</strong> {{ trans_choice("home.apple_count", 1) }}
+<br>
+<strong>With pluralization (plural):</strong> {{ trans_choice("home.apple_count", 4) }} {% endblock content %}
