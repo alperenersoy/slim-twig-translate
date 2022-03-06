@@ -53,6 +53,7 @@ In your twig template files, call these functions:
 trans('key')
 translate('key')
 __('key')
+trans_choice('key', $number) //returns singular or plural translation according to the number variable.
 ```
 
 You can specify other parameters:
@@ -72,7 +73,8 @@ __("Our favorite color is :variable.", {'variable':"blue"}, "en", true)
 ### Other Twig Functions
 ```php
 getLocale() //gets locale e.g. "en".
-hasTranslation($key, $locale = null, $fallback = true) //checks if translation exists. returns true or false
+translator() //returns translator instance itself.
+hasTranslation($key, $locale = null, $fallback = true) //checks if translation exists. returns true or false.
 ```
 
 ### PHP CLI Command to Export Translations From Templates
